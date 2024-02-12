@@ -19,13 +19,13 @@ for i in inp:
 
         # Perform the operation based on the operator
         if i == '+':
-            stack.append(a+b)
+            stack.append(a + b)
         elif i == '-':
-            stack.append(a-b)
+            stack.append(a - b)
         elif i == '*':
-            stack.append(a*b)
+            stack.append(a * b)
         elif i == '/':
-            stack.append(a/b)
+            stack.append(a / b)
 
 # The result of the postfix expression will be the only element left in the stack
 print("Postfix Evaluation: ", stack.pop())
