@@ -1,3 +1,4 @@
+# Program for implementing a MinStack which should support operations like push, pop
 class MinStack:
     def __init__(self):
         # Initialize the main stack and the dummy/minStack to keep track of minimum elements
