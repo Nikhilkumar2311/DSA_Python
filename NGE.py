@@ -1,5 +1,6 @@
 # Program to find Next Greater Element
 
+"""
 stack = []
 arr = [4, 5, 2, 10, 8]
 n = len(arr)
@@ -30,6 +31,25 @@ for i in range(n - 2, -1, -1):
     stack.append(arr[i])
 
 # Print the next greater element for each element in the array
+print("Next Greater Element: ", end=' ')
+for i in ans:
+    print(i, end=' ')
+"""
+
+stack = []
+arr = list(map(int, input("Enter numbers separated by space: ").split()))
+n = len(arr)
+ans = [0] * n
+ans[-1] = -1
+stack.append(ans[-1])
+for i in range(n - 2, -1, -1):
+    while stack and stack[-1] <= arr[i]:
+        stack.pop()
+    if not stack:
+        ans[i] = -1
+    else:
+        ans[i] = stack[-1]
+    stack.append(arr[i])
 print("Next Greater Element: ", end=' ')
 for i in ans:
     print(i, end=' ')

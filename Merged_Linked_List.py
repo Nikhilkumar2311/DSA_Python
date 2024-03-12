@@ -1,5 +1,6 @@
 # Merge two sorted linked lists
 
+"""
 class Node:
     def __init__(self, data):
         self.data = data
@@ -62,6 +63,60 @@ def print_list(head):
 list1 = [1, 3, 4, 5, 8]
 l1 = new(list1)
 list2 = [2, 6, 8, 10, 12, 15]
+l2 = new(list2)
+merged = merge(l1, l2)
+print_list(merged)
+"""
+
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+def new(arr):
+    if not arr:
+        return None
+    head = Node(arr[0])
+    current = head
+    for data in arr[1:]:
+        current.next = Node(data)
+        current = current.next
+    return head
+
+
+def merge(ar1, ar2):
+    t1 = ar1
+    t2 = ar2
+    dummy_node = Node(-1)
+    temp = dummy_node
+    while t1 is not None and t2 is not None:
+        if t1.data < t2.data:
+            temp.next = t1
+            t1 = t1.next
+        else:
+            temp.next = t2
+            t2 = t2.next
+        temp = temp.next
+    if t1:
+        temp.next = t1
+    else:
+        temp.next = t2
+    return dummy_node.next
+
+
+def print_list(head):
+    current = head
+    while current:
+        print(current.data, end=' ')
+        current = current.next
+    print()
+
+
+list1 = list(map(int, input("Enter the elements of the first list: ").split()))
+l1 = new(list1)
+list2 = list(map(int, input("Enter the elements of the second list: ").split()))
 l2 = new(list2)
 merged = merge(l1, l2)
 print_list(merged)

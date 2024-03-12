@@ -1,5 +1,5 @@
 # Program to find the lowest common ancestor
-
+"""
 # Basic Tree Structure
 class TreeNode:
     def __init__(self, val):
@@ -32,7 +32,6 @@ root.left = TreeNode(2)
 root.right = TreeNode(3)
 root.left.left = TreeNode(4)
 root.left.right = TreeNode(5)
-root.right = TreeNode(3)
 root.right.left = TreeNode(6)
 root.right.right = TreeNode(7)
 
@@ -47,4 +46,44 @@ q = root.left.right
 result = lca.lowestAncestor(root, p, q)
 
 # Print the result
+print(f"Lowest Common Ancestor: {result.val}")
+"""
+
+
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+
+class Solution:
+    def lowestAncestor(self, val, a, b):
+        if not val or val == a or val == b:
+            return val
+
+        left = self.lowestAncestor(val.left, a, b)
+        right = self.lowestAncestor(val.right, a, b)
+
+        if left and right:
+            return val
+
+        return left or right
+
+
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
+root.right.left = TreeNode(6)
+root.right.right = TreeNode(7)
+
+lca = Solution()
+
+p = root.left.left
+q = root.left.right
+
+result = lca.lowestAncestor(root, p, q)
+
 print(f"Lowest Common Ancestor: {result.val}")

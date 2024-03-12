@@ -1,5 +1,6 @@
 # Program for Postfix Evaluation
 
+"""
 # Input String representing a Postfix expression
 inp = "23*5+"
 
@@ -29,3 +30,26 @@ for i in inp:
 
 # The result of the postfix expression will be the only element left in the stack
 print("Postfix Evaluation: ", stack.pop())
+"""
+inp = input("Enter a postfix expression: ")
+
+stack = []
+
+for i in inp:
+    if i.isdigit():
+        stack.append(int(i))
+    else:
+        a = stack.pop()
+        b = stack.pop()
+
+        if i == '+':
+            stack.append(b + a)
+        elif i == '-':
+            stack.append(b - a)
+        elif i == '*':
+            stack.append(b * a)
+        elif i == '/':
+            stack.append(round(b / a))
+
+print("Postfix Evaluation: ", stack.pop())
+

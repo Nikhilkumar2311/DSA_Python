@@ -1,5 +1,5 @@
 # Program to find maximum depth/height of Binary Tree
-
+"""
 # Basic Tree Structure
 class BT:
     def __init__(self, val):
@@ -39,3 +39,38 @@ result = obj.maxDepth(root)
 
 # Print the maximum depth
 print(f"Max Height: {result}")
+"""
+
+
+class BT:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+
+class Solution:
+    def maxDepth(self, val):
+        if not val:
+            return 0
+
+        ls = self.maxDepth(val.left)
+
+        rs = self.maxDepth(val.right)
+
+        return 1 + max(ls, rs)
+
+
+root = BT(1)
+root.left = BT(2)
+root.right = BT(3)
+root.left.left = BT(4)
+root.left.right = BT(5)
+root.right.left = BT(6)
+root.right.right = BT(7)
+
+obj = Solution()
+
+result = obj.maxDepth(root)
+
+print(f"Max Depth: {result}")

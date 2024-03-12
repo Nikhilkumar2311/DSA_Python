@@ -1,5 +1,6 @@
 # Intersection of list with O(n)
 
+"""
 class ListNode:
     def __init__(self, val):
         self.val = val
@@ -47,3 +48,62 @@ if result:
     print("Intersection at node with value: ", result.val)
 else:
     print("No Intersection")
+"""
+
+
+class ListNode:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+
+
+class Solution:
+
+    def getInteractionNode(self, HeadA, HeadB):
+        if HeadA is None or HeadB is None:
+            return None
+        a, b = HeadA, HeadB
+        while a != b:
+            a = HeadB if a is None else a.next
+            b = HeadA if b is None else b.next
+        return a
+
+    def printList(self, head):
+        node = head
+        while node:
+            print(node.val, end=" ")
+            node = node.next
+        print()
+
+
+node1 = ListNode(1)
+node2 = ListNode(2)
+node3 = ListNode(3)
+node4 = ListNode(4)
+node5 = ListNode(5)
+
+
+headA = node1
+node1.next = node2
+node2.next = node3
+
+headB = node4
+node4.next = node5
+node5.next = node3
+
+solution = Solution()
+
+print("List A: ", end="")
+solution.printList(headA)
+
+print("List B: ", end="")
+solution.printList(headB)
+
+result = solution.getInteractionNode(headA, headB)
+
+if result:
+    print("Intersection at node with value: ", result.val)
+else:
+    print("No Intersection")
+
+
