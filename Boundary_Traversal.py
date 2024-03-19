@@ -1,5 +1,5 @@
 class treeNode:
-    def __init__(self,val):
+    def __init__(self, val):
         self.val = val
         self.left = self.right = None
 
@@ -41,12 +41,12 @@ def boundaryTraversal(root):
         return res
 
 
-root = treeNode(1)
-root.left = treeNode(2)
-root.right = treeNode(3)
-root.left.left = treeNode(4)
-root.left.right = treeNode(5)
-root.right.left = treeNode(6)
-root.right.right = treeNode(7)
+root = treeNode(10)
+root.left = treeNode(6)
+root.right = treeNode(12)
+root.left.left = treeNode(1)
+root.left.right = treeNode(8)
+root.right.left = treeNode(11)
+root.right.right = treeNode(14)
 
 print(boundaryTraversal(root))
