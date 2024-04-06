@@ -21,7 +21,7 @@ Output: true
 """
 
 
-def isIsomorphic(s: str, t: str) -> bool:
+def isIsomorphic(s, t):
     indexS = [0] * 200  # Stores index of characters in string s
     indexT = [0] * 200  # Stores index of characters in string t
 
